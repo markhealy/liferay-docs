@@ -11,6 +11,7 @@ applications:
 - Bookmarks
 - Software catalog
 - Shopping
+- Weather
 - Knowledge Base
 
 Liferay's Bookmarks application is a simple way for users to keep track of URLs
@@ -920,7 +921,35 @@ book's Amazon page.
 ![Figure 12.28: Using the Amazon Rankings application can be a nice addition to your store.](../../images/shopping-and-amazon-rankings.png)
 
 Now that you have a good grasp on Liferay's Shopping and Amazon Rankings
-applications, let's see what the Knowledge Base application has to offer.
+applications, let's go ahead and check out the Weather.
+
+## Weather [](id=lp-6-1-ugen12-weather-0)
+
+![EE Only Feature](../../images/ee-feature-web.png)
+
+Whether you're going from Los Angeles to La Paz, Mumbai to Moscow, Harare to
+Hong Kong or Dehli to Detroit you will always know the conditions on the ground
+when you use Liferay's Weather application. For EE customers only, it is
+available as a free download from Liferay's Marketplace.
+
+To get the application, go to the Marketplace Store in the Control Panel. Under
+the Apps menu select *Utility*. Select *See All* in the upper right corner of
+the Utility window and view a summary of the application. Follow the download
+instructions and the portlet will appear in your Application menu ready to
+deploy.
+
+![Figure 12.29: Is it raining at Grandma's house? You will know when you use the
+Weather portlet.](../../images/weather-portlet.png)
+
+You can configure the portlet to display locations using the Preferences option.
+The Guest Preferences option allows you to create a default set of locations any
+unregistered visitor to your site can view. Locations can be entered as text or
+as a postal code and are linked to weather.com for the latest conditions. The
+search feature allows users to find cities not listed in the portlet.
+Temperature readings can be displayed as Celsius or Fahrenheit.
+
+That's it for the Weather application. Next, let's see what the Knowledge Base
+application has to offer.
 
 ## Knowledge Base [](id=knowledge-base)
 
@@ -1131,6 +1160,8 @@ create topics from the Categories page of the Control Panel.
 You can select topics for articles when you are creating or editing them.
 
 ## Summary [](id=lp-6-1-ugen12-summary-0)
+
+<!-- TODO Rewrite the summary to reflect bookmarks, shopping, weather, etc.  -->
 
 In this chapter, we examined two Liferay utility applications: the Software
 Catalog and the Knowledge Base. The Software Catalog allows you to define a set
