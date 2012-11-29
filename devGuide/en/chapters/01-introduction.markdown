@@ -111,6 +111,9 @@ go to the *Control Panel* &rarr; *OpenSocial Gadget Publisher*, click the
 
 ![Figure 1.1: Publish a new Gadget](../../images/open-social-gadget-new-ctrl-panel.png)
 
+<!-- | TODO: If this figure remains in this chapter, it should be renamed Figure 
+2.1. Also the caption needs to be a full sentence. | -->
+
 After this is done, the gadget will appear as an application that page
 administrators can add to their pages.
 
