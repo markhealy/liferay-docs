@@ -253,37 +253,29 @@ In order to create a plugin which extends another, follow these steps:
 4. Add the following line to your `build.xml` inside of the <project> tag in
    order to reference the original war file you are going to extend. 
 
-    <property name="original.war.file" value="social-networking-portlet-6.1.10.1-ee-ga1.war" />
-
-<!-- | TODO: In the document, the code above does not appear. How do I fix it? |
--->
+        <property name="original.war.file" value="social-networking-portlet-6.1.10.1-ee-ga1.war" />
 
 5. Copy any files from the original plugin that you'd like to overwrite to your
    new plugin (using the same folder structure) and run the ant target `merge`.
    Please note that the `merge` target is called whenever the plugin is
    compiled. All you have to do is check the ant output: 
 
-    dsanz@host:~/sdk/portlets/my-social-networking-portlet$ ant war
-    Buildfile: /home/dsanz/sdk/portlets/my-social-networking-portlet/build.xml
-    
-<!-- | TODO: In the document, the first part of the code above
-(dsanz@host:~/sdk/portlets/my-social-networking-portlet$) formats like an email
-link. That can't be correct. How is this fixed? Also both lines are displayed as
-a single line wrapping to the next. Is that OK? -->
+        dsanz@host:~/sdk/portlets/my-social-networking-portlet$ ant war
+        Buildfile: /home/dsanz/sdk/portlets/my-social-networking-portlet/build.xml
 
-    compile:
-    
-    merge:
-    [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
-    [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp/WEB-INF/classes
-    [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp/WEB-INF/lib
+        compile:
 
-    merge-unzip:
-    [unzip] Expanding: /home/dsanz/sdk/portlets/my-social-networking-portlet/social-networking-portlet-6.1.10.1-ee-ga1.war into /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
-    [copy] Copying 2 files to /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
-    [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/docroot/WEB-INF/classes
+        merge:
+        [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
+        [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp/WEB-INF/classes
+        [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp/WEB-INF/lib
 
-    ...
+        merge-unzip:
+        [unzip] Expanding: /home/dsanz/sdk/portlets/my-social-networking-portlet/social-networking-portlet-6.1.10.1-ee-ga1.war into /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
+        [copy] Copying 2 files to /home/dsanz/sdk/portlets/my-social-networking-portlet/tmp
+        [mkdir] Created dir: /home/dsanz/sdk/portlets/my-social-networking-portlet/docroot/WEB-INF/classes
+
+        ...
 
 This generates a plugin (you can find the WAR file in the `/dist` folder of your
 plugins SDK) which combines the original one with your changes. 
