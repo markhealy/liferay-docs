@@ -1,14 +1,14 @@
 
 # The Plugins SDK [](id=the-plugins-s-3)
 
-Java developers have a wide variety of tools and development environments.
-Liferay makes every effort to remain tool agnostic, so you can choose the tools
-that work best for you. That's why we provide a Plugins Software Development Kit
-(SDK), based on Apache Ant, which can be used with any editor or Integrated
-Development Environment (IDE). The chapters of this guide will use the Plugins
-SDK and a text editor, but you may use whatever tool you are comfortable with.
-In a later chapter we also introduce Liferay IDE, a plugin for eclipse that
-simplifies development for Liferay.
+Java developers use a wide variety of tools and development environments.
+Liferay makes every effort to remain tool agnostic, allowing you to choose the
+tools that work best for you. That's why we provide a Plugins Software
+Development Kit (SDK), based on Apache Ant, which can be used with any editor or
+Integrated Development Environment (IDE). The chapters of this guide use
+the Plugins SDK and a text editor, but you may use whatever tool you are
+comfortable with. In a later chapter we also introduce Liferay IDE, a plugin for
+eclipse that simplifies development for Liferay.
 
 ---
 
