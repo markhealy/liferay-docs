@@ -4,11 +4,11 @@
 Java developers have a wide variety of tools and development environments.
 Liferay makes every effort to remain tool agnostic, so you can choose the tools
 that work best for you. That's why we provide a Plugins Software Development Kit
-(SDK), which is based on Apache Ant, and it can be used with any editor or
-Integrated Development Environment (IDE). The chapters of this guide will use
-the Plugins SDK and a text editor, but you may use whatever tool you are
-comfortable with. In a later chapter we also introduce Liferay IDE, a plugin for
-eclipse that simplifies development for Liferay.
+(SDK), based on Apache Ant, which can be used with any editor or Integrated
+Development Environment (IDE). The chapters of this guide will use the Plugins
+SDK and a text editor, but you may use whatever tool you are comfortable with.
+In a later chapter we also introduce Liferay IDE, a plugin for eclipse that
+simplifies development for Liferay.
 
 ---
 
@@ -63,12 +63,12 @@ Installation steps:
 1. The Plugins SDK is downloadable from our web site at
 [http://www.liferay.com](http://www.liferay.com). Download the Plugins SDK:
 
-	I.	Click the *Downloads* link at the top of the page
+    I.	Click the *Downloads* link at the top of the page
 
-	II. Then, within the *Liferay Portal 6.1 Community Edition* section, select
+    II. Then, within the *Liferay Portal 6.1 Community Edition* section, select
 	the *Plugins SDK* option
 
-	III. Click *Download*
+    III. Click *Download*
 
 2. Unzip the archive to a folder of your choosing. Avoid using a folder name
 that contains spaces because some operating systems have problems running Java
@@ -101,8 +101,8 @@ your `PATH` by adding $`ANT_HOME\bin` to your `PATH` environment variable.
 You can do this on Linux or Mac OS X by modifying your `.bash_profile` file as
 follows (assuming you installed Ant in `/java`):
 
-	export ANT_HOME=/java/apache-ant-1.8.2
-	export PATH=$PATH:$ANT_HOME/bin
+    export ANT_HOME=/java/apache-ant-1.8.2
+    export PATH=$PATH:$ANT_HOME/bin
 
 Close and reopen your terminal window to make these settings take effect.
 
@@ -117,7 +117,7 @@ Scroll down until you find the `PATH` environment variable. Select it and click
 then click *OK* again. Open a command prompt and type `ant -version` and press
 *Enter*. You should get output similar to this:
 
-	Apache Ant(TM) version 1.8.2 compiled on December 20 2010
+    Apache Ant(TM) version 1.8.2 compiled on December 20 2010
 
 If not, check your environment variable settings and make sure the directory
 where you unzipped Ant is referenced in your `PATH`.
@@ -145,8 +145,8 @@ Edit this file and add the following lines:
     # Specify the paths to an unzipped Tomcat bundle.
     #
 
-	app.server.type=tomcat
-	app.server.dir=the directory containing your application server
+    app.server.type=tomcat
+    app.server.dir=the directory containing your application server
 
 In the case that you are using Liferay Portal bundled with Tomcat,
 `app.server.dir` should be the absolute path to your directory (e.g.
@@ -165,18 +165,18 @@ type. Here is the directory structure of the Plugins SDK:
 
 - `liferay-plugins-[version]/` - Plugins SDK root directory.
 
-	-	`clients/` - Client applications directory.
+	- `clients/` - Client applications directory.
 
-	-	`dist/` - Archived plugins for distribution and deployment.
+	- `dist/` - Archived plugins for distribution and deployment.
 
-	-	`ext/` - Ext plugins directory. See chapter *Ext plugins*.
+	- `ext/` - Ext plugins directory. See chapter *Ext plugins*.
 
-	-	`hooks/` - Hook plugins directory. See chapter *Hooks*.
+	- `hooks/` - Hook plugins directory. See chapter *Hooks*.
 
 	- `layouttpl/` - Layout templates directory. See chapter *Creating Liferay
 	Themes*.
 
-	-	`lib/` - Commonly referenced libraries.
+	- `lib/` - Commonly referenced libraries.
 
 	- `misc/` - Development configuration files. Example, a source code
 	formatting specification file.
@@ -187,15 +187,15 @@ type. Here is the directory structure of the Plugins SDK:
 	- `themes/` - Themes plugins directory. See chapter *Creating Liferay
 	Themes*.
 
-	-	`tools/` - Plugin templates and utilities.
+	- `tools/` - Plugin templates and utilities.
 
-	-	`webs/` - Web plugins directory.
+	- `webs/` - Web plugins directory.
 
-	-	`build.properties` - Default SDK properties.
+	- `build.properties` - Default SDK properties.
 
-	-	`build.[user.name].properties` (optional) - Override SDK properties.
+	- `build.[user.name].properties` (optional) - Override SDK properties.
 
-	-	`build.xml` - Contains targets to invoke for the SDK.
+	- `build.xml` - Contains targets to invoke for the SDK.
 
 	- `build-common.xml` - Contains common targets and properties referenced
 	throughout the SDK.
@@ -220,14 +220,14 @@ Builder.
 - `clean` - Cleans the residual files created by the invocations of the
 compilation, archiving and deployment targets.
 
--	`compile` - Compiles the plugin source code.
+- `compile` - Compiles the plugin source code.
 
--	`deploy` - Builds and deploys the plugin to your application server.
+- `deploy` - Builds and deploys the plugin to your application server.
 
 - `format-source` - Formats the source code per Liferay's source code
 guidelines.
 
--	`format-javadoc` - Formats the Javadoc per Liferay's Javadoc guildelines.
+- `format-javadoc` - Formats the Javadoc per Liferay's Javadoc guildelines.
 
 Next, let's learn how to use the Plugins SDK to create a plugin that extends
 another plugin.
