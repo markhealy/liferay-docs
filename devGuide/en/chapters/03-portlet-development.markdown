@@ -58,7 +58,7 @@ Greeting*, respectively
 3. Select *Portlet* as your Plugin type
 4. Click *Finish*
 
-![Figure 3.1: Creating the My Greeting portlet](../../images/02-portlet-development-1.png)
+![Figure 4.x: Make sure there are no spaces in your portlet's project name.](../../images/02-portlet-development-1.png)
 
 When using Developer Studio to create new plugins, you have the option to either
 create a new plugin project or create a new plugin in an existing project. For
@@ -129,14 +129,15 @@ server. This will be a method of deployment used throughout this guide.
 server. Upon deploying your plugin, your server will output messages indicating
 that your plugin was read, registered and is now available for use.
 
-	Reading plugin package for my-greeting-portlet
-	Registering portlets for my-greeting-portlet
-	1 portlet for my-greeting-portlet is available for use
+    Reading plugin package for my-greeting-portlet
+    Registering portlets for my-greeting-portlet
+    1 portlet for my-greeting-portlet is available for use
 	
 If at any time you need to redeploy your portlet while in Developer Studio,
-right click your portlet located underneath your server and select *Redeploy*.
+right-click your portlet located underneath your server and select *Redeploy*.
 
-![Figure 3.2: Redeployment of the My Greeting portlet](../../images/02-portlet-development-2.png)
+![Figure 4.x: You can redeploy the My Greeting portlet by right-clicking the 
+portlet underneath your server.](../../images/02-portlet-development-2.png)
 
 ***To deploy using the terminal*** - Open a terminal window in your
 `portlets/my-greeting-portlet` directory and enter this command:
@@ -154,7 +155,8 @@ over *Add* at the top of the page, and click on *More*. Select the *Sample*
 category, and then click *Add* next to *My Greeting*. Your portlet should appear
 in the page below.
 
-![Figure 3.3: Adding the My Greeting portlet](../../images/portlets-add-my-greeting-portlet.png)
+![Figure 4.x: Once your portlet has been deployed, you can add it to a page 
+from the portal's Add menu.](../../images/portlets-add-my-greeting-portlet.png)
 
 Congratulations, you've just created your first portlet!
 
@@ -172,19 +174,19 @@ When using Liferay's Plugins SDK, these files are stored in a standard directory
 structure which looks like the following:
 
 -	PORTLET-NAME/
-	-	build.xml
-	-	docroot/
-		-	css/
-		-	js/
-		-	WEB-INF/
-			-	src/ (not created by default)
-			-	liferay-display.xml
-			-	liferay-plugin-package.properties
-			-	liferay-portlet.xml
-			-	portlet.xml
-			-	web.xml (not created by default)
-		-	icon.png
-		-	view.jsp
+    -	build.xml
+    -	docroot/
+        -	css/
+        -	js/
+        -	WEB-INF/
+            -	src/ (not created by default)
+            -	liferay-display.xml
+            -	liferay-plugin-package.properties
+            -	liferay-portlet.xml
+            -	portlet.xml
+            -	web.xml (not created by default)
+        -	icon.png
+        -	view.jsp
 
 The portlet we just created is a fully functional portlet which can be deployed
 to your Liferay instance.
@@ -200,7 +202,8 @@ Here is a snapshot of files for a portlet plugin named *my-greeting portlet* as
 shown in Developer Studio's *Package Explorer*. We will add and edit files in
 this directory to create a new and improved portlet!
 
-![Figure 3.4: Package Explorer of the My Greeting portlet](../../images/02-portlet-development-3.png)
+![Figure 4.x: View all your portlet's files in the Package Explorer of Developer
+Studio.](../../images/02-portlet-development-3.png)
 
 The **Java Source** is stored in the `docroot/WEB-INF/src` folder
 
@@ -252,7 +255,8 @@ When using the Plugins SDK, the default content of the portlet descriptor is as
 follows (shown using Developer Studio's Portlet Application Configuration
 Editor):
 
-![Figure 3.5: Portlet XML file of the My Greeting portlet](../../images/02-portlet-development-4.png)
+![Figure 4.x: The portlet XML file of the My Greeting portlet displays the 
+default content of the portlet descriptor.](../../images/02-portlet-development-4.png)
 
 Here is a basic summary of what each of the elements represents:
 
@@ -313,7 +317,8 @@ which roles can access the portlet.
 Standard portlets that are installed on a Liferay Portal server. By default, the
 Plugins SDK sets the contents of this descriptor, as shown in Developer Studio:
 
-![Figure 3.6: Liferay-Portlet XML file of the My Greeting portlet](../../images/02-portlet-development-5.png)
+![Figure 4.x: Liferay-specific enhancements for the My Greeting portlet can be 
+modified in the Liferay-Portlet XML file.](../../images/02-portlet-development-5.png)
 
 Here is a basic summary of what some of the elements represents.
 
@@ -375,9 +380,9 @@ following:
     <portlet:defineObjects />
 
     <%
-	PortletPreferences prefs = renderRequest.getPreferences();
-	String greeting = (String)prefs.getValue(
-	"greeting", "Hello! Welcome to our portal.");
+    PortletPreferences prefs = renderRequest.getPreferences();
+    String greeting = (String)prefs.getValue(
+    "greeting", "Hello! Welcome to our portal.");
     %>
 
     <p><%= greeting %></p>
@@ -399,36 +404,36 @@ content:
     <portlet:defineObjects />
 
     <%
-	PortletPreferences prefs = renderRequest.getPreferences();
-	String greeting = renderRequest.getParameter("greeting");
-	if (greeting != null) {
-		prefs.setValue("greeting", greeting);
-		prefs.store();
+    PortletPreferences prefs = renderRequest.getPreferences();
+    String greeting = renderRequest.getParameter("greeting");
+    if (greeting != null) {
+        prefs.setValue("greeting", greeting);
+        prefs.store();
     %>
 
-		<p>Greeting saved successfully!</p>
+        <p>Greeting saved successfully!</p>
 
     <%
-	}
+    }
     %>
 
     <%
-	greeting = (String)prefs.getValue(
-		"greeting", "Hello! Welcome to our portal.");
+    greeting = (String)prefs.getValue(
+        "greeting", "Hello! Welcome to our portal.");
     %>
 
     <portlet:renderURL var="editGreetingURL">
-		<portlet:param name="mvcPath" value="/edit.jsp" />
+        <portlet:param name="mvcPath" value="/edit.jsp" />
     </portlet:renderURL>
 
     <aui:form action="<%= editGreetingURL %>" method="post">
-		<aui:input label="greeting" name="greeting" type="text" value="<%=
-	greeting %>" />
-		<aui:button type="submit" />
+        <aui:input label="greeting" name="greeting" type="text" value="<%=
+    greeting %>" />
+        <aui:button type="submit" />
     </aui:form>
 
     <portlet:renderURL var="viewGreetingURL">
-		<portlet:param name="mvcPath" value="/view.jsp" />
+        <portlet:param name="mvcPath" value="/view.jsp" />
     </portlet:renderURL>
 
     <p><a href="<%= viewGreetingURL %>">&larr; Back</a></p>
@@ -438,10 +443,13 @@ deploy** in your `my-greeting-portlet` folder. Go back to your web browser and
 refresh the page; you should now be able to use the portlet to save and display
 a custom greeting.
 
-![Figure 3.7: The *view* page of My Greeting portlet](../../images/portlets-view-my-greeting.png)
+![Figure 4.x: Review your message using the *view* page of the My Greeting 
+portlet.](../../images/portlets-view-my-greeting.png)
 
-![Figure 3.8: The *edit* page of My Greeting portlet](../../images/portlets-edit-my-greeting.png)
+![Figure 4.x: Modify your message using the *edit* page of the My Greeting 
+portlet.](../../images/portlets-edit-my-greeting.png)
 
+<!--  | TODO: Add text following these images before the tip? |  -->
 
 ---
 
@@ -503,7 +511,7 @@ assumption that the invocation will yield the same result).
 Now imagine this scenario: we have a page with two portlets, a navigation
 portlet and a shopping portlet. A user comes to the page and does the following:
 
-1.  Loads the page.
+1. Loads the page.
 
 2. Clicks a button on the shopping portlet that automatically charges an amount
 on her credit card and starts a process to ship her the product she just bought.
@@ -562,20 +570,20 @@ Our example above could be enhanced by creating the following class:
     import com.liferay.util.bridges.mvc.MVCPortlet;
 
     public class MyGreetingPortlet extends MVCPortlet {
-		@Override
-		public void processAction(
-			ActionRequest actionRequest, ActionResponse actionResponse)
-			throws IOException, PortletException {
-			PortletPreferences prefs = actionRequest.getPreferences();
-			String greeting = actionRequest.getParameter("greeting");
+        @Override
+        public void processAction(
+            ActionRequest actionRequest, ActionResponse actionResponse)
+            throws IOException, PortletException {
+            PortletPreferences prefs = actionRequest.getPreferences();
+            String greeting = actionRequest.getParameter("greeting");
 
-			if (greeting != null) {
-				prefs.setValue("greeting", greeting);
-				prefs.store();
-			}
+            if (greeting != null) {
+                prefs.setValue("greeting", greeting);
+                prefs.store();
+            }
 
-			super.processAction(actionRequest, actionResponse);
-		}
+            super.processAction(actionRequest, actionResponse);
+        }
     }
 
 Create the above class, and its package, within directory `docroot/WEB-INF/src`
@@ -585,14 +593,14 @@ The file `portlet.xml` also needs to be changed so that it points to your new
 class:
 
     <portlet>
-	<portlet-name>my-greeting</portlet-name>
-	<display-name>My Greeting</display-name>
-	<portlet-class>com.liferay.samples.MyGreetingPortlet</portlet-class>
-	<init-param>
-	    <name>view-template</name>
-	    <value>/view.jsp</value>
-	</init-param>
-	...
+    <portlet-name>my-greeting</portlet-name>
+    <display-name>My Greeting</display-name>
+    <portlet-class>com.liferay.samples.MyGreetingPortlet</portlet-class>
+    <init-param>
+    <name>view-template</name>
+        <value>/view.jsp</value>
+    </init-param>
+    ...
 
 Finally, you will need to make a minor change in the `edit.jsp` file and change
 the URL to which the form is sent in order to let the portal know to execute the
@@ -625,23 +633,23 @@ preference:
     <portlet:defineObjects />
 
     <%
-	PortletPreferences prefs = renderRequest.getPreferences();
-	String greeting = (String)prefs.getValue(
-		"greeting", "Hello! Welcome to our portal.");
+    PortletPreferences prefs = renderRequest.getPreferences();
+    String greeting = (String)prefs.getValue(
+        "greeting", "Hello! Welcome to our portal.");
     %>
 
     <portlet:actionURL var="editGreetingURL">
-		<portlet:param name="mvcPath" value="/edit.jsp" />
+        <portlet:param name="mvcPath" value="/edit.jsp" />
     </portlet:actionURL>
 
     <aui:form action="<%= editGreetingURL %>" method="post">
-		<aui:input label="greeting" name="greeting" type="text" value="<%=
-	greeting %>" />
-		<aui:button type="submit" />
+        <aui:input label="greeting" name="greeting" type="text" value="<%=
+    greeting %>" />
+        <aui:button type="submit" />
     </aui:form>
 
     <portlet:renderURL var="viewGreetingURL">
-		<portlet:param name="mvcPath" value="/view.jsp" />
+        <portlet:param name="mvcPath" value="/view.jsp" />
     </portlet:renderURL>
 
     <p><a href="<%= viewGreetingURL %>">&larr; Back</a></p>
@@ -683,10 +691,10 @@ phase you must read them from the `actionRequest` and then invoke the
  all action parameters directly as render parameters. You can achieve this just
  by setting the following `init-param` in your `portlet.xml`:
 
-	<init-param>
-		<name>copy-request-parameters</name>
-		<value>true</value>
-	</init-param>
+    <init-param>
+        <name>copy-request-parameters</name>
+        <value>true</value>
+    </init-param>
 
 ---
 
@@ -721,65 +729,65 @@ provides a helper class and taglib to do this operation easily. In the
     import com.liferay.util.bridges.mvc.MVCPortlet;
 
     public class MyGreetingPortlet extends MVCPortlet {
-		@Override
-		public void processAction(
-			ActionRequest actionRequest, ActionResponse actionResponse)
-			throws IOException, PortletException {
-			PortletPreferences prefs = actionRequest.getPreferences();
-			String greeting = actionRequest.getParameter("greeting");
+        @Override
+        public void processAction(
+            ActionRequest actionRequest, ActionResponse actionResponse)
+            throws IOException, PortletException {
+            PortletPreferences prefs = actionRequest.getPreferences();
+            String greeting = actionRequest.getParameter("greeting");
 
-			if (greeting != null) {
-				prefs.setValue("greeting", greeting);
-				prefs.store();
-			}
+            if (greeting != null) {
+                prefs.setValue("greeting", greeting);
+                prefs.store();
+            }
 
-			SessionMessages.add(actionRequest, "success");
-			super.processAction(actionRequest, actionResponse);
-		}
+            SessionMessages.add(actionRequest, "success");
+            super.processAction(actionRequest, actionResponse);
+        }
     }
 
 Also, in `view.jsp`, you would need to add the `liferay-ui:success` JSP tag and
 add the taglib declaration `<%@ taglib uri="http://liferay.com/tld/ui"
 prefix="liferay-ui" %>` along with the other declarations, as shown below:
 
-	<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
-	<%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
-	<%@ page import="javax.portlet.PortletPreferences" %>
+    <%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+    <%@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
+    <%@ page import="javax.portlet.PortletPreferences" %>
 
-	<portlet:defineObjects />
+    <portlet:defineObjects />
 
-	<liferay-ui:success key="success" message="Greeting saved
-			successfully!" />
+    <liferay-ui:success key="success" message="Greeting saved
+           successfully!" />
 
-	<%
-	PortletPreferences prefs = renderRequest.getPreferences();
-	String greeting = (String)prefs.getValue(
-	"greeting", "Hello! Welcome to our portal.");
-	%>
+    <%
+    PortletPreferences prefs = renderRequest.getPreferences();
+    String greeting = (String)prefs.getValue(
+    "greeting", "Hello! Welcome to our portal.");
+    %>
 
-	<p><%= greeting %></p>
-	<portlet:renderURL var="editGreetingURL">
-	<portlet:param name="mvcPath" value="/edit.jsp" />
+    <p><%= greeting %></p>
+    <portlet:renderURL var="editGreetingURL">
+    <portlet:param name="mvcPath" value="/edit.jsp" />
 
-	</portlet:renderURL>
+    </portlet:renderURL>
 
-	<p><a href="<%= editGreetingURL %>">Edit greeting</a></p>
+    <p><a href="<%= editGreetingURL %>">Edit greeting</a></p>
 
 After this change, redeploy the portlet, go to the edit screen and save it. You
 should see a nice message that looks like this:
 
-![Figure 3.9: The sample "My Greetings" portlet showing a success message](../../images/portlet-greeting-save.png)
+![Figure 4.x: Changes to the "My Greetings" portlet have been saved.](../../images/portlet-greeting-save.png)
 
 There is also an equivalent utility class for error notification. This is
 commonly used after catching an exception in the `processAction` method. For
 example.
 
     try {
-		prefs.setValue("greeting", greeting);
-		prefs.store();
+        prefs.setValue("greeting", greeting);
+        prefs.store();
     }
     catch(Exception e) {
-		SessionErrors.add(actionRequest, "error");
+        SessionErrors.add(actionRequest, "error");
     }
 
 And then the error, if it exists, is shown in your `view.jsp` using the
@@ -790,7 +798,8 @@ And then the error, if it exists, is shown in your `view.jsp` using the
 
 If an error were to occur you would see something like this in your portlet:
 
-![Figure 3.10: The sample "My Greetings" portlet showing an error message](../../images/portlet-invalid-data.png)
+![Figure 4.x: The portal alerts you when there are problems saving your 
+changes.](../../images/portlet-invalid-data.png)
 
 The first message is automatically added by Liferay. The second one is the one
 you added in your JSP.
@@ -812,31 +821,31 @@ Let's rewrite the example from the previous section to use a custom name for the
 action method that sets the greeting and add a second action method for sending
 emails.
 
-	public class MyGreetingPortlet extends MVCPortlet {
-		public void setGreeting(
-				ActionRequest actionRequest, ActionResponse actionResponse)
-		throws IOException, PortletException {
-			PortletPreferences prefs = actionRequest.getPreferences();
-			String greeting = actionRequest.getParameter("greeting");
+    public class MyGreetingPortlet extends MVCPortlet {
+        public void setGreeting(
+                ActionRequest actionRequest, ActionResponse actionResponse)
+        throws IOException, PortletException {
+            PortletPreferences prefs = actionRequest.getPreferences();
+            String greeting = actionRequest.getParameter("greeting");
 
-			if (greeting != null) {
-				try {
-					prefs.setValue("greeting", greeting);
-					prefs.store();
-					SessionMessages.add(actionRequest, "success");
-				}
-				catch(Exception e) {
-					SessionErrors.add(actionRequest, "error");
-				}
-			}
-		}
+            if (greeting != null) {
+                try {
+                    prefs.setValue("greeting", greeting);
+                    prefs.store();
+                    SessionMessages.add(actionRequest, "success");
+                }
+                catch(Exception e) {
+                    SessionErrors.add(actionRequest, "error");
+                }
+            }
+        }
 
-		public void sendEmail(
-				ActionRequest actionRequest, ActionResponse actionResponse)
-		throws IOException, PortletException {
-			// Add code here to send an email
-		}
-	}
+        public void sendEmail(
+                ActionRequest actionRequest, ActionResponse actionResponse)
+        throws IOException, PortletException {
+            // Add code here to send an email
+        }
+    }
 
 Note how we no longer need to invoke the `processAction` method of the super
 class, because we are not overriding it.
@@ -846,7 +855,7 @@ name of the method that should be invoked to execute the action. In the
 `edit.jsp` modify the `actionURL` so that it looks like this:
 
     <portlet:actionURL var="editGreetingURL" name="setGreeting">
-		<portlet:param name="mvcPath" value="/edit.jsp" />
+        <portlet:param name="mvcPath" value="/edit.jsp" />
     </portlet:actionURL>
 
 That's it; now you know all the basics of portlets and are ready to use your
@@ -873,11 +882,11 @@ than the query string. To add this functionality, first edit
 before `<instanceable>`.
 
     <friendly-url-mapper-class>
-    	com.liferay.portal.kernel.portlet.DefaultFriendlyURLMapper
+        com.liferay.portal.kernel.portlet.DefaultFriendlyURLMapper
     </friendly-url-mapper-class>
     <friendly-url-mapping>my-greeting</friendly-url-mapping>
     <friendly-url-routes>
-    	com/liferay/samples/my-greeting-friendly-url-routes.xml
+        com/liferay/samples/my-greeting-friendly-url-routes.xml
     </friendly-url-routes>
 
 Next, create the file (remove the line break):
@@ -892,22 +901,26 @@ file:
     <!DOCTYPE routes PUBLIC "-//Liferay//DTD Friendly URL Routes 6.1.0//EN" 
     "http://www.liferay.com/dtd/liferay-friendly-url-routes_6_1_0.dtd">
 
-	<routes>
-		<route>
-			<pattern>/{mvcPathName}</pattern>
-			<generated-parameter name="mvcPath">/{mvcPathName}.jsp</generated-parameter>
-		</route>
-	</routes>
+    <routes>
+        <route>
+            <pattern>/{mvcPathName}</pattern>
+            <generated-parameter name="mvcPath">/{mvcPathName}.jsp</generated-parameter>
+        </route>
+    </routes>
 
 Redeploy your portlet, refresh the page, and try clicking either of the links
 again.
 
-![Figure 3.11: Friendly URL for view JSP](../../images/portlets-my-greeting-view-friendly.png)
+![Figure 4.x: Friendly URL for view JSP](../../images/portlets-my-greeting-view-friendly.png)
+
+<!--  | TODO: change the caption. |  -->
 
 Notice how much shorter and more user-friendly the URL is, without even having
 to modify the JSPs.
 
-![Figure 3.12: Friendly URL for edit JSP](../../images/portlets-my-greeting-edit-friendly.png)
+![Figure 4.x: Friendly URL for edit JSP](../../images/portlets-my-greeting-edit-friendly.png)
+
+<!--  | TODO: change the caption. |  -->
 
 For more information on friendly URL mapping, you can check full discussion of
 this topic in [*Liferay in Action*](http://manning.com/sezov). But, next, let's
@@ -922,7 +935,7 @@ projects and this is wind at developers' backs. You can always check for
 presence of any key in core `Language.properties` file and include it in your
 jsp with `<liferay-ui:message>` tag:
 
-	<liferay-ui:message key="your-message-key" />
+    <liferay-ui:message key="your-message-key" />
 
 Doing this saves a lot of time needed for maintenance and translation, 
 since you'll always have up to date translations for multiple languages.
@@ -973,24 +986,24 @@ create the following files:
 For each portlet, update its `<portlet>` node in `portlet.xml` to refer to the
 resource bundle correctly:
 
-	<portlet>
-		<portlet-name>finances</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
-	<portlet>
-		<portlet-name>portfolio</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
-	<portlet>
-		<portlet-name>ticker</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
+    <portlet>
+        <portlet-name>finances</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
+    <portlet>
+        <portlet-name>portfolio</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
+    <portlet>
+        <portlet-name>ticker</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
 
 At this point our portlets are ready to deliver a localized UI.
 
@@ -1040,33 +1053,33 @@ think this is too long for your taste, and you think you can keep track of which
 portlet is which, then apply the Liferay core portlet naming convention--set
 your portlet names as numbers! If we change our `portlet.xml` this way:
 
-	<portlet>
-		<portlet-name>1</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
-	<portlet>
-		<portlet-name>2</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
-	<portlet>
-		<portlet-name>3</portlet-name>
-		...
-		<resource-bundle>content.Language</resource-bundle>
-		...
-	</portlet>
+    <portlet>
+        <portlet-name>1</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
+    <portlet>
+        <portlet-name>2</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
+    <portlet>
+        <portlet-name>3</portlet-name>
+        ...
+        <resource-bundle>content.Language</resource-bundle>
+        ...
+    </portlet>
 
 our title and description keys in `Language.properties` would be:
 
-	javax.portlet.description.1_WAR_personalfinanceportlet=...
-	javax.portlet.description.2_WAR_personalfinanceportlet=...
-	javax.portlet.description.3_WAR_personalfinanceportlet=...
-	javax.portlet.title.1_WAR_personalfinanceportlet=...
-	javax.portlet.title.2_WAR_personalfinanceportlet=...
-	javax.portlet.title.3_WAR_personalfinanceportlet=...
+    javax.portlet.description.1_WAR_personalfinanceportlet=...
+    javax.portlet.description.2_WAR_personalfinanceportlet=...
+    javax.portlet.description.3_WAR_personalfinanceportlet=...
+    javax.portlet.title.1_WAR_personalfinanceportlet=...
+    javax.portlet.title.2_WAR_personalfinanceportlet=...
+    javax.portlet.title.3_WAR_personalfinanceportlet=...
 
 
 ---
