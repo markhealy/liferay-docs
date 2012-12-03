@@ -58,7 +58,8 @@ Greeting*, respectively
 3. Select *Portlet* as your Plugin type
 4. Click *Finish*
 
-![Figure 4.x: Make sure there are no spaces in your portlet's project name.](../../images/02-portlet-development-1.png)
+![Figure 4.x: Make sure there are no spaces in your portlet's 
+project name.](../../images/02-portlet-development-1.png)
 
 When using Developer Studio to create new plugins, you have the option to either
 create a new plugin project or create a new plugin in an existing project. For
@@ -150,10 +151,10 @@ for a few seconds, you should see the message *1 portlet for my-greeting-portlet
 is available for use*. If not, something is wrong and you should double-check
 your configuration.
 
-Go to your web browser and login to the portal as explained earlier. Then, hover
-over *Add* at the top of the page, and click on *More*. Select the *Sample*
-category, and then click *Add* next to *My Greeting*. Your portlet should appear
-in the page below.
+Go to your web browser and login to the portal <!-- as explained earlier -->.
+Then, hover over *Add* at the top of the page, and click on *More*. Select the
+*Sample* category, and then click *Add* next to *My Greeting*. Your portlet
+should appear in the page below.
 
 ![Figure 4.x: Once your portlet has been deployed, you can add it to a page 
 from the portal's Add menu.](../../images/portlets-add-my-greeting-portlet.png)
@@ -205,7 +206,7 @@ this directory to create a new and improved portlet!
 ![Figure 4.x: View all your portlet's files in the Package Explorer of Developer
 Studio.](../../images/02-portlet-development-3.png)
 
-The **Java Source** is stored in the `docroot/WEB-INF/src` folder
+The **Java Source** is stored in the `docroot/WEB-INF/src` folder.
 
 The **Configuration Files** are stored in the `docroot/WEB-INF` folder. The
 standard JSR-286 portlet configuration file `portlet.xml` is here, as well as
@@ -229,14 +230,14 @@ there are too many settings to mention here. The DTD may be found in the
 - *liferay-plugin-package.properties*: This file describes the plugin to
 Liferay's hot deployer. Dependency JAR files (`.jar`) can be configured in this
 file. If a portlet plugin has dependencies on particular `.jar` files that
-already come with Liferay, you can specify them in this file and the hot
-deployer will modify the `.war` file on deployment to copy those `.jar` files
-from inside the `.war` file. That way you don't have to include the `.jars`
-yourself and the `.war` will be lighter.
+already come with Liferay, you can specify them in this file. The hot deployer
+will modify the `.war` file on deployment to copy those `.jar` files from inside
+the `.war` file. That way you don't have to include the `.jars` yourself and the
+`.war` will be lighter.
 
 **Client Side Files** are the `.jsp`, `.css`, and JavaScript files that you
 write to implement your portlet's user interface. These files should go in the
-`docroot` folder somewhere—either in the root of the folder or in a folder
+`docroot` folder somewhere--either in the root of the folder or in a folder
 structure of their own. Remember that with portlets you are only dealing with a
 portion of the HTML document that is getting returned to the browser. Any HTML
 code you have in your client side files should be free of global tags such as
@@ -711,7 +712,7 @@ portlet is rendered until the portlet is invoked again *without* that render
 parameter.
 
 The second way of passing information from the action phase to the render phase
-is not unique to portlets, so it might be familiar to you -- using the session.
+is not unique to portlets, so it might be familiar to you--using the session.
 By using the session, your code can set an attribute in the `actionRequest` that
 is then read from the JSP. In our case, the JSP would also immediately remove
 the attribute from the session so that the message is only shown once. Liferay
@@ -776,7 +777,8 @@ prefix="liferay-ui" %>` along with the other declarations, as shown below:
 After this change, redeploy the portlet, go to the edit screen and save it. You
 should see a nice message that looks like this:
 
-![Figure 4.x: Changes to the "My Greetings" portlet have been saved.](../../images/portlet-greeting-save.png)
+![Figure 4.x: Customize the success message of 
+the "My Greetings" portlet.](../../images/portlet-greeting-save.png)
 
 There is also an equivalent utility class for error notification. This is
 commonly used after catching an exception in the `processAction` method. For
@@ -798,8 +800,8 @@ And then the error, if it exists, is shown in your `view.jsp` using the
 
 If an error were to occur you would see something like this in your portlet:
 
-![Figure 4.x: The portal alerts you when there are problems saving your 
-changes.](../../images/portlet-invalid-data.png)
+![Figure 4.x: You can customize the second error message in 
+your `view.jsp`.](../../images/portlet-invalid-data.png)
 
 The first message is automatically added by Liferay. The second one is the one
 you added in your JSP.
@@ -813,7 +815,7 @@ have one action. How do we add another action, for example for sending an email
 to the user?
 
 You can have as many actions as you want in a portlet, each of them needs to be
-implemented as a method that receives two parameters -- an `ActionRequest` and
+implemented as a method that receives two parameters--an `ActionRequest` and
 an `ActionResponse`. The name of the method can be whatever you want since you
 will be referring to it when creating the URL.
 
@@ -911,16 +913,18 @@ file:
 Redeploy your portlet, refresh the page, and try clicking either of the links
 again.
 
-![Figure 4.x: Friendly URL for view JSP](../../images/portlets-my-greeting-view-friendly.png)
-
-<!--  | TODO: change the caption. |  -->
+![Figure 4.x: Besides being short, friendly URLs allow users to easily navigate 
+your site and share links.](../../images/portlets-my-greeting-view-friendly.png)
 
 Notice how much shorter and more user-friendly the URL is, without even having
 to modify the JSPs.
 
+<!--
 ![Figure 4.x: Friendly URL for edit JSP](../../images/portlets-my-greeting-edit-friendly.png)
 
-<!--  | TODO: change the caption. |  -->
+ | TODO: For this example, do we really need both of these images? Wouldn't one 
+ suffice? | 
+ -->
 
 For more information on friendly URL mapping, you can check full discussion of
 this topic in [*Liferay in Action*](http://manning.com/sezov). But, next, let's
@@ -931,22 +935,22 @@ make our site look "top notch" by using Liferay Themes.
 If your portlets target international customers, you need to localize your
 portlet user interface for particular locations. What's nice about this is that
 all existing translated messages in the portal core are accessible from plugins
-projects and this is wind at developers' backs. You can always check for
+projects and this is wind at developers' backs. You can always check for the
 presence of any key in core `Language.properties` file and include it in your
 jsp with `<liferay-ui:message>` tag:
 
     <liferay-ui:message key="your-message-key" />
 
-Doing this saves a lot of time needed for maintenance and translation, 
-since you'll always have up to date translations for multiple languages.
-Additionally, your portlet blends better into Liferay's UI conventions. If you
-need further localization keys, you can follow the instructions below and
-deliver a perfect portlet to your customers.
+Doing this saves a lot of time needed for maintenance and translation, since
+you'll always have up to date translations for multiple languages. Additionally,
+your portlet blends better into Liferay's UI conventions. If you need further
+localization keys, you can follow the instructions below and deliver a perfect
+portlet to your customers.
 
 ### Your Localization Plan [](id=your-localization-plan)
 
-Before we dive into localizations, we should consider some questions that
-will make our life easier later:
+Before we dive into localizations, we should consider some questions that will
+make our life easier later:
 
 - Does my plugin contain more than one portlet? This is very important if
   portlets share the same UI elements and messages; you don't want to maintain
@@ -1019,9 +1023,9 @@ the following operations:
 
 - Translates English text to target language if you've set up the API key
 
-- Keeps all created translations synchronized with `Language.properties`. You can
-  run this task any time during development. It significantly reduces the 
-  time spent on the maintanance of translations. 
+- Keeps all created translations synchronized with `Language.properties`. You
+  can run this task any time during development. It significantly reduces the 
+  time spent on the maintanance of translations.
 
 Next, we'll see how to localize portlet titles and descriptions. 
 
@@ -1032,7 +1036,7 @@ missing that super fancy must-have portlet title and description in Control
 Panel. To make your portlet look cool within the Control Panel, for each portlet
 you can create specially tailored description and title keys in
 `Language.properties`. You can do this by creating a key from the following
-components: 
+components:
 
 - `javax.portlet.title.` prefix that marks the key as title
 
@@ -1096,8 +1100,8 @@ as portlet title.
 ---
 
 ![tip](../../images/tip-pen-paper.png)**Tip:** Be aware that using Struts
-portlet and referring to a `StrutsResource` bundle in your `portlet.xml` engages a
-different title and description algorithm. Instead, titles and long titles are
+portlet and referring to a `StrutsResource` bundle in your `portlet.xml` engages
+a different title and description algorithm. Instead, titles and long titles are
 pulled using the following two keys:
 
 - javax.portlet.long-title.1_WAR_personalfinanceportlet
@@ -1108,10 +1112,11 @@ pulled using the following two keys:
 ### Overriding Liferay portal translations [](id=lp-6-1-dgen03-overriding-liferay-portal-translations-0)
 
 If you want your translations available throughout the portal, or if you want to
-override an existing translation, please chapter 7, specifically the *Overriding a
-Language.properties File* section which describes how to use hook to override
-existing Liferay translations. Using this technique, you can share your keys
-with other portlets, as well as override existing Liferay translations. 
+override an existing translation, please see chapter 7, specifically the
+*Overriding a Language.properties File* section which describes how to use hooks
+to override existing Liferay translations. Using this technique, you can share
+your keys with other portlets, as well as override existing Liferay
+translations. 
 
 ### Summary [](id=lp-6-1-dgen03-summary-0)
 
